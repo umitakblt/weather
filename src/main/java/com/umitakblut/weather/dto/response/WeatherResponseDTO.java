@@ -1,8 +1,12 @@
 package com.umitakblut.weather.dto.response;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class WeatherResponseDTO implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 5942283737290984143L;
+
     private Double tempCelcius;
     private Double tempFahrenheit;
 
