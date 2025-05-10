@@ -9,6 +9,7 @@ import com.umitakblut.weather.external.weather.model.WeatherExternalResponseDTO;
 import com.umitakblut.weather.service.WeatherService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,6 +23,7 @@ public class WeatherServiceImpl implements WeatherService {
         this.weatherExternalService = weatherExternalService;
     }
 
+    @Cacheable(key = "#weatherRequestDTO.cityName", value = "weatherChecks")
     @Override
     public WeatherResponseDTO weatherCheck(WeatherRequestDTO weatherRequestDTO) {
         log.info("WeatherServiceImpl.weatherCheck(): weatherRequestDTO: {}", weatherRequestDTO);
